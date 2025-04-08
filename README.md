@@ -29,6 +29,12 @@ The project consists of two main components:
 
 ## Installation
 
+### Prerequisites
+
+-   Node.js (v14 or higher)
+-   MongoDB (local installation or MongoDB Atlas account)
+-   Google Cloud account with Gemini API access
+
 ### Backend Setup
 
 1. Navigate to the backend directory:
@@ -49,17 +55,68 @@ The project consists of two main components:
     cp .env.example .env
     ```
 
-4. Start the server:
+4. Update the `.env` file with your configuration:
+
+    ```
+    PORT=5000
+    NODE_ENV=development
+    MONGODB_URI=mongodb://localhost:27017/image-insight-ai
+    JWT_SECRET=your_jwt_secret_key
+    JWT_EXPIRY=7d
+    GEMINI_API_KEY=your_gemini_api_key
+    FREEIMAGE_API_KEY=6d207e02198a847aa98d0a2a901485a5
+    ```
+
+5. Start the server:
+
     ```
     npm start
     ```
 
+    For development with auto-reload:
+
+    ```
+    npm run dev
+    ```
+
 ### Extension Setup
 
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable "Developer mode" in the top-right corner
-3. Click "Load unpacked" and select the `extension` directory
-4. The extension should now be installed and visible in your browser toolbar
+1. Navigate to the extension directory:
+
+    ```
+    cd extension
+    ```
+
+2. Build the extension (optional):
+
+    ```
+    npm run build
+    ```
+
+3. Open Chrome and navigate to `chrome://extensions/`
+4. Enable "Developer mode" in the top-right corner
+5. Click "Load unpacked" and select the `extension` directory
+6. The extension should now be installed and visible in your browser toolbar
+
+### Testing
+
+To run the backend tests:
+
+```
+npm test
+```
+
+For continuous testing during development:
+
+```
+npm run test:watch
+```
+
+To generate test coverage report:
+
+```
+npm run test:coverage
+```
 
 ## Usage
 
@@ -86,6 +143,7 @@ The project consists of two main components:
     -   HTML, CSS, JavaScript
     -   Chrome Extension API
     -   Fetch API
+    -   Chrome Storage API
 
 -   **Backend**:
     -   Node.js
@@ -94,6 +152,48 @@ The project consists of two main components:
     -   JWT for authentication
     -   Gemini 2.0 Flash Lite API
     -   Axios for HTTP requests
+    -   Jest and Supertest for testing
+
+## Project Structure
+
+```
+root/
+├── extension/                 # Browser Extension (Frontend)
+│   ├── images/                # Extension icons
+│   ├── popup.html            # Main extension popup
+│   ├── popup.js              # Popup JavaScript
+│   ├── auth.js               # Authentication functionality
+│   ├── background.js         # Background script
+│   ├── styles.css            # CSS styles
+│   ├── manifest.json         # Extension manifest
+│   └── package.json          # Frontend dependencies
+│
+├── backend/                  # Backend API Server
+│   ├── config/               # Configuration files
+│   ├── controllers/          # Route controllers
+│   ├── middleware/           # Express middleware
+│   ├── models/               # MongoDB models
+│   ├── routes/               # API routes
+│   ├── tests/                # Test files
+│   ├── utils/                # Utility functions
+│   ├── .env.example          # Example environment variables
+│   ├── server.js             # Main server file
+│   └── package.json          # Backend dependencies
+│
+├── shared/                   # Shared constants
+├── .gitignore                # Git ignore file
+├── LICENSE                   # MIT License
+└── README.md                 # Project documentation
+```
+
+## Error Handling
+
+The application implements comprehensive error handling:
+
+-   **Frontend**: Proper error messages for API failures, network issues, and validation errors
+-   **Backend**: Centralized error handling middleware with appropriate HTTP status codes
+-   **API**: Consistent error response format with descriptive messages
+-   **Authentication**: Secure JWT validation with proper error responses
 
 ## License
 

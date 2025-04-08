@@ -58,7 +58,7 @@ The project consists of two main components:
 4. Update the `.env` file with your configuration:
 
     ```
-    PORT=5000
+    PORT=3000
     NODE_ENV=development
     MONGODB_URI=mongodb://localhost:27017/image-insight-ai
     JWT_SECRET=your_jwt_secret_key

@@ -4,7 +4,7 @@
  */
 
 // API base URL
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "http://localhost:3000/api";
 
 // Error handling timeout (ms)
 const REQUEST_TIMEOUT = 30000; // 30 seconds

@@ -1,0 +1,11 @@
+{
+  "name": "image-insight-ai-extension",
+  "version": "1.0.0",
+  "description": "Browser extension for Image Insight AI",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r images manifest.json popup.html popup.js auth.js background.js styles.css dist/",
+    "package": "npm run build && cd dist && zip -r ../image-insight-ai-extension.zip *"
+  },
+  "author": "chirag127",
+  "license": "MIT"
+}

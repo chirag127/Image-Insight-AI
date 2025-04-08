@@ -1,0 +1,17 @@
+# Ignore build artifacts
+*.zip
+*.crx
+*.pem
+
+# Ignore node modules if using npm for development
+node_modules/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
